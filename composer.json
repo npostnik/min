@@ -1,0 +1,20 @@
+{
+    "name": "npostnik/min",
+    "description": "Minify output",
+    "type": "typo3-cms-extension",
+	"version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^12.4",
+        "wyrihaximus/html-compress": "^4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Npostnik\\Min\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "min"
+        }
+    }
+}
