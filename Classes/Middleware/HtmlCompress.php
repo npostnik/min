@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\StreamFactory;
-use WyriHaximus\HtmlCompress\Factory;
 
 /*
  * Thanks to https://www.in2code.de/aktuelles/php-html-output-in-typo3-komprimieren/
@@ -45,9 +44,9 @@ class HtmlCompress implements MiddlewareInterface
      */
     protected function compressHtml(string $html): string
     {
-        $parser = Factory::construct();
-        $html = $parser->compress($html);
-        $html = $this->removeComments($html);
+        $htmlMin = new \Abordage\HtmlMin\HtmlMin();
+        $html = $htmlMin->minify($html);
+        $this->removeComments($html);
         return $html;
     }
 
